@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.stage {
+    background-color: rgb(227, 227, 227);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.simula {
+    width: 50%;
+    padding: 5%;
+}
+
+.simula h2 {
+    font-size: 1.2rem;
+}
+
+#lbmargemLucro {
+    font-size: 0.8rem;
+}
+
+#margemLucro::placeholder {
+    font-size: 0.8rem;
+}
+
+#lbvalorPerda {
+    margin-top: 20px;
+    font-size: 0.8rem;
+}
+
+#valorPerda::placeholder {
+    font-size: 0.8rem;
+}
+
+.btnCalcular {
+    margin-top: 20px;
+}
+
+#resultado {
+    font-size: 1rem;
+}
