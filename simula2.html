@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Impacto de Fatura Não Paga</title>
+</head>
+<body>
+
+<h2>Descubra o impacto real de uma fatura não paga para sua empresa</h2>
+
+<p>Margem operacional: <span id="margemDisplay">10</span>%</p>
+<input type="range" id="margem" min="1" max="100" value="10" oninput="calculate()">
+
+<p>Valor não pago (BRL): <span id="valorDisplay">10000</span></p>
+<input type="range" id="valorNaoPago" min="1000" max="1000000" value="10000" step="1000" oninput="calculate()">
+
+<p>Para absorver um débito de BRL <span id="debitoDisplay">10000</span>, sua empresa precisa gerar um faturamento de BRL <span id="resultado">100000</span>.</p>
+
+<script>
+    function calculate() {
+        var margem = parseInt(document.getElementById('margem').value);
+        var valorNaoPago = parseFloat(document.getElementById('valorNaoPago').value);
+
+        var resultado = valorNaoPago / (margem / 100);
+
+        document.getElementById('margemDisplay').textContent = margem;
+        document.getElementById('valorDisplay').textContent = valorNaoPago;
+        document.getElementById('debitoDisplay').textContent = valorNaoPago;
+        document.getElementById('resultado').textContent = resultado.toFixed(2);
+    }
+
+    calculate(); // Chama a função ao carregar a página para definir valores iniciais
+</script>
+
+</body>
+</html>

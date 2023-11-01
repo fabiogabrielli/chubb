@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights Estratégicos WGA Advisors</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .impactItem {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Painel de Insights -->
+<div id="strategicImpacts">
+    <h2>INSIGHTS: Seis Impactos Estratégicos através do Seguro de Crédito</h2>
+    <p>Clique e entenda como.</p>
+    <div class="impactItem">
+        <button onclick="toggleDescription('description1')">ALAVANCAGEM DE VENDAS</button>
+        <p id="description1" class="hidden">Proporcione prazos mais vantajosos e eleve limites de crédito impulsionando suas vendas e protegendo o seu fluxo de caixa.</p>
+    </div>
+    <div class="impactItem">
+        <button onclick="toggleDescription('description2')">CRESCIMENTO EM CLIENTES-CHAVE</button>
+        <p id="description2" class="hidden">Intensifique suas vendas para os principais clientes, fornecendo mais crédito e prazo tornando-se mais competitivo e fortalecendo relações comerciais.</p>
+    </div>
+    <div class="impactItem">
+        <button onclick="toggleDescription('description3')">CONQUISTA DE NOVOS MERCADOS</button>
+        <p id="description3" class="hidden">Avalie riscos de forma precisa, pré-qualifique clientes e garanta proteção extra, permitindo que você explore novos mercados com confiança e segurança.</p>
+    </div>
+    <div class="impactItem">
+        <button onclick="toggleDescription('description4')">EXPANSÃO INTERNACIONAL SEGURA</button>
+        <p id="description4" class="hidden">Tome decisões estratégicas e ofereça condições competitivas em mercados internacionais, eliminando a necessidade de cartas de crédito e pagamentos à vista.</p>
+    </div>
+    <div class="impactItem">
+        <button onclick="toggleDescription('description5')">FINANCIAMENTO ACESSÍVEL</button>
+        <p id="description5" class="hidden">Utilize recebíveis segurados como garantias, conseguindo acesso a capital de giro com taxas mais atrativas.</p>
+    </div>
+    <div class="impactItem">
+        <button onclick="toggleDescription('description6')">FLUXO DE CAIXA ESTÁVEL E RENTABILIDADE</button>
+        <p id="description6" class="hidden">Mitigue o risco de inadimplência e mora, mantendo um fluxo de caixa saudável e maximizando a rentabilidade do seu negócio.</p>
+    </div>
+</div>
+
+<script>
+    function toggleDescription(id) {
+        var element = document.getElementById(id);
+        if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+        } else {
+            element.classList.add('hidden');
+        }
+    }
+</script>
+
+</body>
+</html>
+
+
+

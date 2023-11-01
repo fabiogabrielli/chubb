@@ -3,36 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="estileira.css">
-     
+    <link rel="stylesheet" type="text/css" href="estiloCHUBB.css">
+    <title>Simulador WGA Advisors</title>
+    
     <!-- CSS do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
    
     <!-- Add the slick-theme.css if you want default styling -->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
-      
-    <title>SIMULADOR CHUBB</title>
+  
 </head>
-
 <body>
-    <section class="stage">
-        <div class="card simula">
-            <h2>Simulador de Perda para Empresas - Trade Credit</h2>
-            <div class="form-group">
-                <label id="lbmargemLucro" for="margemLucro">Margem de Lucro (%)</label>
-                <input type="text" class="form-control" id="margemLucro" placeholder="Digite a margem de lucro em %" oninput="formatarComoPorcentagem(this)">
-            </div>
-            <div class="form-group">
-                <label id="lbvalorPerda" for="valorPerda">Valor da Perda (R$)</label>
-                <input type="text" class="form-control" id="valorPerda" placeholder="Digite o valor da perda em R$" oninput="formatarComoMoeda(this)">
-            </div>
-            <button class="btnCalcular btn btn-primary" onclick="calcularFaturamentoNecessario()">Calcular</button>
-            <p class="mt-3" id="resultado"></p>
-        </div>
-    </section>
-    
 
-    <script src="simulador.js"></script>
+<header>
+    <img src="https://www.chubb.com/content/dam/chubb-sites/chubb/us-en/home_page/CHUBB_Logo_Black_RBG.png" alt="logo CHUBB">
+</header>
+<section class="geral">
+    <div class="stageCalculadora">
+        <div class="calculadora">
+            <div class="slider-container">
+                Faturamento Anual: R$ <span id="faturamentoOutput">0</span><br>
+                <input type="range" min="0" max="2000000000" step="5000000" value="0" id="faturamentoSlider">
+            </div>
+
+            <div class="slider-container">
+                Lucro Operacional: <span id="lucroOutput">0</span>%<br>
+                <input type="range" min="0" max="100" step="1" value="0" id="lucroSlider">
+            </div>
+
+            <div class="slider-container">
+                Valor Estimado da Perda: R$ <span id="perdaOutput">0</span><br>
+                <input type="range" min="0" max="50000000" step="10000" value="0" id="perdaSlider">
+            </div>
+
+            <div class="slider-container">
+                Taxa de Juros (anual): <span id="jurosOutput">0</span>%<br>
+                <input type="range" min="0" max="50" step="0.1" value="0" id="jurosSlider">
+            </div>
+
+            <button onclick="calculate()">Calcular</button>
+
+            <div id="result"></div>
+
+            <p><strong>Fórmula do Custo de Oportunidade:</strong> Custo = Valor da Perda × ((1 + r/12)^12 - 1)</p>
+            <p><strong>Disclaimer: <strong> Os cálculos são apenas estimativas e podem não refletir a realidade de sua empresa.</p>
+        </div>
+    </div>
+<div class="stageImpactos">
+    <div class="impactos">
+    <!-- Painel de Insights -->
+    <div id="strategicImpacts">
+        <h2>INSIGHTS: Seis Impactos Estratégicos através do Seguro de Crédito</h2>
+        <p>Clique e entenda como.</p>
+        <div class="impactItem">
+            <button onclick="toggleDescription('description1')">ALAVANCAGEM DE VENDAS</button>
+            <p name="teste"  id="description1" class="hidden">Proporcione prazos mais vantajosos e eleve limites de crédito impulsionando suas vendas e protegendo o seu fluxo de caixa.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description2')">CRESCIMENTO EM CLIENTES-CHAVE</button>
+            <p name="teste"  id="description2" class="hidden">Intensifique suas vendas para os principais clientes, fornecendo mais crédito e prazo tornando-se mais competitivo e fortalecendo relações comerciais.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description3')">CONQUISTA DE NOVOS MERCADOS</button>
+            <p name="teste"  id="description3" class="hidden">Avalie riscos de forma precisa, pré-qualifique clientes e garanta proteção extra, permitindo que você explore novos mercados com confiança e segurança.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description4')">EXPANSÃO INTERNACIONAL SEGURA</button>
+            <p name="teste"  id="description4" class="hidden">Tome decisões estratégicas e ofereça condições competitivas em mercados internacionais, eliminando a necessidade de cartas de crédito e pagamentos à vista.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description5')">FINANCIAMENTO ACESSÍVEL</button>
+            <p name="teste"  id="description5" class="hidden">Utilize recebíveis segurados como garantias, conseguindo acesso a capital de giro com taxas mais atrativas.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description6')">FLUXO DE CAIXA ESTÁVEL E RENTABILIDADE</button>
+            <p name="teste" id="description6" class="hidden">Mitigue o risco de inadimplência e mora, mantendo um fluxo de caixa saudável e maximizando a rentabilidade do seu negócio.</p>
+        </div>
+    </div>
+
+    <script>
+    function toggleDescription(descriptionId) {
+        // Esconde todos os parágrafos
+        var paragraphs = document.querySelectorAll('#strategicImpacts p[name="teste"]');
+        paragraphs.forEach(function(p) {
+            p.classList.add('hidden');
+        });
+
+        // Mostra o parágrafo correspondente ao botão clicado
+        var selectedParagraph = document.getElementById(descriptionId);
+        if (selectedParagraph.classList.contains('hidden')) {
+            selectedParagraph.classList.remove('hidden');
+        } else {
+            selectedParagraph.classList.add('hidden');
+        }
+    }
+    </script>
+    </div>
+</div>
+</section>
+
+<script>
+    const faturamentoSlider = document.getElementById("faturamentoSlider");
+    const lucroSlider = document.getElementById("lucroSlider");
+    const perdaSlider = document.getElementById("perdaSlider");
+    const jurosSlider = document.getElementById("jurosSlider");
+
+    const faturamentoOutput = document.getElementById("faturamentoOutput");
+    const lucroOutput = document.getElementById("lucroOutput");
+    const perdaOutput = document.getElementById("perdaOutput");
+    const jurosOutput = document.getElementById("jurosOutput");
+
+    const resultDiv = document.getElementById("result");
+
+    faturamentoSlider.oninput = function() {
+        faturamentoOutput.textContent = formatValue(this.value);
+    }
+
+    lucroSlider.oninput = function() {
+        lucroOutput.textContent = this.value;
+    }
+
+    perdaSlider.oninput = function() {
+        perdaOutput.textContent = formatValue(this.value);
+    }
+
+    jurosSlider.oninput = function() {
+        jurosOutput.textContent = this.value;
+    }
+
+    function formatValue(value) {
+        value = parseInt(value, 10);
+        return value.toLocaleString('pt-BR', { minimumFractionDigits: 0 });
+    }
+
+    function calculate() {
+        const faturamentoAnual = parseFloat(faturamentoSlider.value);
+        const lucroOperacional = parseFloat(lucroSlider.value) / 100;
+        const valorEstimadoPerda = parseFloat(perdaSlider.value);
+        const taxaDeJuros = parseFloat(jurosSlider.value) / 100;
+
+        const lucroAnual = faturamentoAnual * lucroOperacional;
+
+        const custoOportunidade = valorEstimadoPerda * (Math.pow(1 + taxaDeJuros / 12, 12) - 1);
+        const perdaEstimadaTotal = valorEstimadoPerda + custoOportunidade;
+        const mesesParaRecuperar = perdaEstimadaTotal / (lucroAnual / 12);
+
+        let classificacaoImpacto;
+        if (mesesParaRecuperar < 2) {
+            classificacaoImpacto = "Perda Leve";
+        } else if (mesesParaRecuperar < 4) {
+            classificacaoImpacto = "Perda Moderada";
+        } else if (mesesParaRecuperar < 6) {
+            classificacaoImpacto = "Perda Significativa";
+        } else {
+            classificacaoImpacto = "Perda Crítica";
+        }
+
+        resultDiv.innerHTML = `
+            Custo de Oportunidade: R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
+            Prejuízo Total:R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
+            Meses para recuperar a perda: ${mesesParaRecuperar.toFixed(2)}<br>
+            Classificação de Impacto: ${classificacaoImpacto}
+        `;
+    }
+</script>
 
 
 <!-- JavaScript e dependências do Bootstrap -->
