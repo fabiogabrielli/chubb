@@ -65,7 +65,7 @@ header img {
     font-family: 'Lato', sans-serif;
     color: white;
     margin-bottom: 20px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 /* IMPACTOS */
@@ -85,8 +85,8 @@ header img {
 
 #strategicImpacts p {
     color: white;
-    font-size: 0.8rem;
-    font-weight: 300;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 #strategicImpacts button {

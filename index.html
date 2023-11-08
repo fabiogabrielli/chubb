@@ -54,7 +54,7 @@
     <!-- Painel de Insights -->
     <div id="strategicImpacts">
         <h2>INSIGHTS: Seis Impactos Estratégicos através do Seguro de Crédito</h2>
-        <p>Clique e entenda como.</p>
+        <p>Clique nos botões abaixo e entenda como.</p>
         <div class="impactItem">
             <button onclick="toggleDescription('description1')">ALAVANCAGEM DE VENDAS</button>
             <p name="teste"  id="description1" class="hidden">Proporcione prazos mais vantajosos e eleve limites de crédito impulsionando suas vendas e protegendo o seu fluxo de caixa.</p>
@@ -160,10 +160,10 @@
         }
 
         resultDiv.innerHTML = `
-            Custo de Oportunidade: R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
-            Prejuízo Total:R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
-            Meses para recuperar a perda: ${mesesParaRecuperar.toFixed(2)}<br>
-            Classificação de Impacto: ${classificacaoImpacto}
+            <b>Custo de Oportunidade: </b>R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
+            <b>Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
+            <b>Meses para recuperar a perda:</b> ${mesesParaRecuperar.toFixed(2)}<br>
+            ,b>Classificação de Impacto:</b> ${classificacaoImpacto}
         `;
     }
 </script>
