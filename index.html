@@ -23,7 +23,7 @@
         <div class="calculadora">
             <div class="slider-container">
                 Faturamento Anual: R$ <span id="faturamentoOutput">0</span><br>
-                <input type="range" min="0" max="2000000000" step="5000000" value="0" id="faturamentoSlider">
+                <input type="range" min="200000000" max="10000000000" step="5000000" value="200000000" id="faturamentoSlider">
             </div>
 
             <div class="slider-container">
@@ -33,7 +33,7 @@
 
             <div class="slider-container">
                 Valor Estimado da Perda: R$ <span id="perdaOutput">0</span><br>
-                <input type="range" min="0" max="100000000" step="10000" value="0" id="perdaSlider">
+                <input type="range" min="0" max="500000000" step="10000" value="0" id="perdaSlider">
             </div>
 
             <div class="slider-container">
@@ -115,6 +115,8 @@
 
     const resultDiv = document.getElementById("result");
 
+    faturamentoOutput.textContent = "200.000.000";
+
     faturamentoSlider.oninput = function() {
         faturamentoOutput.textContent = formatValue(this.value);
     }
@@ -158,25 +160,27 @@
         } else {
             classificacaoImpacto = "Perda Crítica";
         }
-
-        let taxaSeguro;
-        if (faturamentoAnual <= 10000000) { //10 milhoes
-            taxaSeguro = faturamentoAnual * 0.005;
-        } else if (faturamentoAnual <= 100000000) { // 100 milhoes
-            taxaSeguro = faturamentoAnual * 0.003;
-        } else if (faturamentoAnual <= 1000000000) { // 1 bilhao
-            taxaSeguro = faturamentoAnual * 0.002;
-        } else if (faturamentoAnual <= 10000000000) { // 10 bilhões
-            taxaSeguro = faturamentoAnual * 0.001;
-        }
         
+        // Calcula a taxa de seguro de crédito com base no faturamento
+        const taxaMaxima = 0.003; // 0,3%
+        const taxaMinima = 0.0005; // 0,05%
+        const faturamentoMaximo = 10000000000; // R$ 10 bilhões
+        const faturamentoMinimo = 200000000; // R$ 200 milhoes
+        var taxaSeguro = taxaMinima + ((taxaMaxima - taxaMinima) / (faturamentoMinimo - faturamentoMaximo)) * (faturamentoAnual - faturamentoMaximo);
+
+        //let taxaSeguro = taxaMaxima - ((faturamentoAnual / faturamentoMaximo) * (taxaMaxima - taxaMinima));
+        //let taxaSeguro = taxaMaxima - (faturamentoAnual * ((taxaMaxima-taxaMinima)/faturamentoMaximo));
+        taxaSeguro = Math.max(taxaSeguro, taxaMinima); // Garante que a taxa não seja menor que o mínimo
+
+        let custoSeguro = faturamentoAnual * taxaSeguro;     
 
         resultDiv.innerHTML = `
             <b>Custo de Oportunidade: </b>R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
             <b>Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
             <b>Meses para recuperar a perda:</b> ${mesesParaRecuperar.toFixed(2)}<br>
             <b>Classificação de Impacto:</b> ${classificacaoImpacto}<br><br>
-            <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente :</b>R$ ${formatValue(taxaSeguro.toFixed(2))}</p>
+            <b>Taxa do Seguro:</b> ${taxaSeguro.toFixed(4)}<br><br>
+            <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente :</b>R$ ${formatValue(custoSeguro.toFixed(2))}</p>
         `;
     }
 </script>
