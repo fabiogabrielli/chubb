@@ -159,11 +159,24 @@
             classificacaoImpacto = "Perda Crítica";
         }
 
+        let taxaSeguro;
+        if (faturamentoAnual <= 10000000) { //10 milhoes
+            taxaSeguro = faturamentoAnual * 0.005;
+        } else if (faturamentoAnual <= 100000000) { // 100 milhoes
+            taxaSeguro = faturamentoAnual * 0.003;
+        } else if (faturamentoAnual <= 1000000000) { // 1 bilhao
+            taxaSeguro = faturamentoAnual * 0.002;
+        } else if (faturamentoAnual <= 10000000000) { // 10 bilhões
+            taxaSeguro = faturamentoAnual * 0.001;
+        }
+        
+
         resultDiv.innerHTML = `
             <b>Custo de Oportunidade: </b>R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
             <b>Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
             <b>Meses para recuperar a perda:</b> ${mesesParaRecuperar.toFixed(2)}<br>
-            <b>Classificação de Impacto:</b> ${classificacaoImpacto}
+            <b>Classificação de Impacto:</b> ${classificacaoImpacto}<br><br>
+            <b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente :</b>R$ ${formatValue(taxaSeguro.toFixed(2))}
         `;
     }
 </script>
