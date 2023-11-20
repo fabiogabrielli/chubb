@@ -45,8 +45,8 @@
 
             <div id="result"></div>
 
-            <p><strong>Fórmula do Custo de Oportunidade:</strong> Custo = Valor da Perda × ((1 + r/12)^12 - 1)</p>
-            <p><strong>Disclaimer: <strong> Os cálculos são apenas estimativas e podem não refletir a realidade de sua empresa.</p>
+            <p><strong>Custo de Oportunidade:</strong>Custo associado à oportunidade que você renuncia ao tomar uma decisão específica</p>
+            <p><strong>Disclaimer: </strong> Os cálculos são apenas estimativas e podem não refletir a realidade de sua empresa.</p>
         </div>
     </div>
 <div class="stageImpactos">
@@ -166,11 +166,11 @@
         const taxaMinima = 0.0005; // 0,05%
         const faturamentoMaximo = 10000000000; // R$ 10 bilhões
         const faturamentoMinimo = 200000000; // R$ 200 milhoes
-        var taxaSeguro = taxaMinima + ((taxaMaxima - taxaMinima) / (faturamentoMinimo - faturamentoMaximo)) * (faturamentoAnual - faturamentoMaximo);
+        var taxaSeguro = taxaMaxima + ((taxaMaxima - taxaMinima) * (faturamentoAnual - faturamentoMinimo)) / (faturamentoMaximo - faturamentoMinimo);
 
         //let taxaSeguro = taxaMaxima - ((faturamentoAnual / faturamentoMaximo) * (taxaMaxima - taxaMinima));
         //let taxaSeguro = taxaMaxima - (faturamentoAnual * ((taxaMaxima-taxaMinima)/faturamentoMaximo));
-        taxaSeguro = Math.max(taxaSeguro, taxaMinima); // Garante que a taxa não seja menor que o mínimo
+        //taxaSeguro = Math.max(taxaSeguro, taxaMinima); // Garante que a taxa não seja menor que o mínimo
 
         let custoSeguro = faturamentoAnual * taxaSeguro;     
 
@@ -179,8 +179,8 @@
             <b>Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
             <b>Meses para recuperar a perda:</b> ${mesesParaRecuperar.toFixed(2)}<br>
             <b>Classificação de Impacto:</b> ${classificacaoImpacto}<br><br>
-            <b>Taxa do Seguro:</b> ${taxaSeguro.toFixed(4)}<br><br>
-            <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente :</b>R$ ${formatValue(custoSeguro.toFixed(2))}</p>
+            <b>Taxa do Seguro:</b> ${taxaSeguro.toFixed(7)}<br><br>
+            <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente: </b>R$ ${formatValue(custoSeguro.toFixed(2))}</p>
         `;
     }
 </script>
