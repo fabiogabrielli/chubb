@@ -45,7 +45,7 @@
 
             <div id="result"></div>
 
-            <p><strong>Custo de Oportunidade:</strong>Custo associado à oportunidade que você renuncia ao tomar uma decisão específica</p>
+            <p><strong>Custo de Oportunidade:</strong> Custo associado à oportunidade que você renuncia ao tomar uma decisão específica</p>
             <p><strong>Disclaimer: </strong> Os cálculos são apenas estimativas e podem não refletir a realidade de sua empresa.</p>
         </div>
     </div>
@@ -166,20 +166,23 @@
         const taxaMinima = 0.0005; // 0,05%
         const faturamentoMaximo = 10000000000; // R$ 10 bilhões
         const faturamentoMinimo = 200000000; // R$ 200 milhoes
-        var taxaSeguro = taxaMaxima + ((taxaMaxima - taxaMinima) * (faturamentoAnual - faturamentoMinimo)) / (faturamentoMaximo - faturamentoMinimo);
-
+        //var taxaSeguro = taxaMaxima + ((taxaMaxima - taxaMinima) * (faturamentoAnual - faturamentoMinimo)) / (faturamentoMaximo - faturamentoMinimo);
         //let taxaSeguro = taxaMaxima - ((faturamentoAnual / faturamentoMaximo) * (taxaMaxima - taxaMinima));
         //let taxaSeguro = taxaMaxima - (faturamentoAnual * ((taxaMaxima-taxaMinima)/faturamentoMaximo));
+        let taxaSeguro = taxaMaxima - ((faturamentoAnual-faturamentoMinimo)/(faturamentoMaximo-faturamentoMinimo)) * (taxaMaxima - taxaMinima);
+        
+        taxaSeguro = Math.max(Math.min(taxaSeguro, taxaMaxima), taxaMinima);
         //taxaSeguro = Math.max(taxaSeguro, taxaMinima); // Garante que a taxa não seja menor que o mínimo
 
-        let custoSeguro = faturamentoAnual * taxaSeguro;     
+        let custoSeguro = faturamentoAnual * taxaSeguro;
+        let taxaSeguroPorCento = taxaSeguro * 100;     
 
         resultDiv.innerHTML = `
             <b>Custo de Oportunidade: </b>R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
             <b>Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
             <b>Meses para recuperar a perda:</b> ${mesesParaRecuperar.toFixed(2)}<br>
             <b>Classificação de Impacto:</b> ${classificacaoImpacto}<br><br>
-            <b>Taxa do Seguro:</b> ${taxaSeguro.toFixed(7)}<br><br>
+            <b>Taxa do Seguro:</b> ${taxaSeguroPorCento.toFixed(2)}%<br><br>
             <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente: </b>R$ ${formatValue(custoSeguro.toFixed(2))}</p>
         `;
     }
