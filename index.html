@@ -45,7 +45,9 @@
 
             <div id="result"></div>
 
-            <p><strong>Custo de Oportunidade:</strong> Custo associado à oportunidade que você renuncia ao tomar uma decisão específica</p>
+            <p><strong>Custo de Oportunidade:</strong> Avalia o valor direto de uma perda estimada e o custo de oportunidade associado, calculado com base na taxa de juros escolhida, refletindo o retorno perdido que o capital poderia ter gerado.</p>
+            <p><strong>Impacto Financeiro Total:</strong> Combina o valor estimado da perda com o custo de oportunidade para fornecer uma visão do impacto financeiro total sobre o negócio.</p>
+            <p><strong>Tempo de Recuperação:</strong> Estima quantos meses serão necessários para que a empresa recupere a perda, considerando seu lucro operacional mensal, oferecendo uma noção da resiliência financeira da empresa.</p>
             <p><strong>Disclaimer: </strong> Os cálculos são apenas estimativas e podem não refletir a realidade de sua empresa.</p>
         </div>
     </div>
@@ -169,9 +171,18 @@
         //var taxaSeguro = taxaMaxima + ((taxaMaxima - taxaMinima) * (faturamentoAnual - faturamentoMinimo)) / (faturamentoMaximo - faturamentoMinimo);
         //let taxaSeguro = taxaMaxima - ((faturamentoAnual / faturamentoMaximo) * (taxaMaxima - taxaMinima));
         //let taxaSeguro = taxaMaxima - (faturamentoAnual * ((taxaMaxima-taxaMinima)/faturamentoMaximo));
-        let taxaSeguro = taxaMaxima - ((faturamentoAnual-faturamentoMinimo)/(faturamentoMaximo-faturamentoMinimo)) * (taxaMaxima - taxaMinima);
-        
-        taxaSeguro = Math.max(Math.min(taxaSeguro, taxaMaxima), taxaMinima);
+        //let taxaSeguro = taxaMaxima - ((faturamentoAnual-faturamentoMinimo)/(faturamentoMaximo-faturamentoMinimo)) * (taxaMaxima - taxaMinima);
+        //let taxaSeguro = taxaMaxima - (faturamentoAnual * ((taxaMaxima-taxaMinima)/faturamentoMaximo));
+
+
+        var taxaSeguro;
+        if (faturamentoAnual <= 1000000000) {
+        taxaSeguro = ((faturamentoAnual - 200000000) / (1000000000 - 200000000) * (2000000000 - 600000000) + 600000000) / 1000;
+        } else {
+        taxaSeguro = ((faturamentoAnual - 1000000000) / (10000000000 - 1000000000) * (5000000000 - 2000000000) + 2000000000) / 1000;
+        }
+
+        //taxaSeguro = Math.max(Math.min(taxaSeguro, taxaMaxima), taxaMinima);
         //taxaSeguro = Math.max(taxaSeguro, taxaMinima); // Garante que a taxa não seja menor que o mínimo
 
         let custoSeguro = faturamentoAnual * taxaSeguro;
@@ -182,7 +193,8 @@
             <b>Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
             <b>Meses para recuperar a perda:</b> ${mesesParaRecuperar.toFixed(2)}<br>
             <b>Classificação de Impacto:</b> ${classificacaoImpacto}<br><br>
-            <b>Taxa do Seguro:</b> ${taxaSeguroPorCento.toFixed(2)}%<br><br>
+            <b>Taxa do Seguro:</b> ${taxaSeguroPorCento.toFixed(3)}%<br><br>
+            <b>Taxa do Seguro:</b> ${taxaSeguro.toFixed(3)}%<br><br>
             <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente: </b>R$ ${formatValue(custoSeguro.toFixed(2))}</p>
         `;
     }
