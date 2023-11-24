@@ -48,7 +48,7 @@
 
             <p><strong>Custo de Oportunidade:</strong> Avalia o valor direto de uma perda estimada e o custo de oportunidade associado, calculado com base na taxa de juros escolhida, refletindo o retorno perdido que o capital poderia ter gerado.</p>
             <p><strong>Prejuízo Total:</strong> Combina o valor estimado da perda com o custo de oportunidade para fornecer uma visão do impacto financeiro total sobre o negócio.</p>
-            <p><strong>Tempo de Recuperação:</strong> Estima quantos meses serão necessários para que a empresa recupere a perda, considerando seu lucro operacional mensal, oferecendo uma noção da resiliência financeira da empresa.</p>
+            <p><strong>Tempo de Recuperação (meses)</strong> Estima quantos meses serão necessários para que a empresa recupere a perda, considerando seu lucro operacional mensal, oferecendo uma noção da resiliência financeira da empresa.</p>
             <p><strong>Disclaimer: </strong> Os cálculos são apenas estimativas e podem não refletir a realidade de sua empresa.</p>
         </div>
     </div>
@@ -83,7 +83,6 @@
             <p name="teste" id="description6" class="hidden">Mitigue o risco de inadimplência e mora, mantendo um fluxo de caixa saudável e maximizando a rentabilidade do seu negócio.</p>
         </div>
     </div>
-
     <script>
     function toggleDescription(descriptionId) {
         // Esconde todos os parágrafos
@@ -180,7 +179,7 @@
         resultDiv.innerHTML = `
             <b>Custo de Oportunidade: </b>R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
             <b>Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
-            <b>Meses para recuperar a perda:</b> ${mesesParaRecuperar.toFixed(2)}<br>
+            <b>Tempo de Recuperação (meses):</b> ${mesesParaRecuperar.toFixed(1)}<br>
             <b>Classificação de Impacto:</b> ${classificacaoImpacto}<br><br>
             <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente: </b>R$ ${formatValue(custoSeguro.toFixed(2))}</p>
         `;
