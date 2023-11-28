@@ -1,49 +1,118 @@
-function formatarComoPorcentagem(input) {
-    let valor = input.value.replace(/\D/g, ''); // Remove tudo que não é dígito
-    valor = valor.replace(/^0+/, ''); // Remove zeros à esquerda
-    input.value = valor ? `${valor}%` : '';
-}
 
-function formatarComoMoeda(input) {
-    let valor = input.value.replace(/\D/g, '').replace(/^0+/, '');
-    if (valor.length === 0) {
-        valor = '0,00';
-    } else if (valor.length === 1) {
-        valor = '0,0' + valor;
-    } else if (valor.length === 2) {
-        valor = '0,' + valor;
-    } else {
-        valor = valor.replace(/(\d+)(\d{2})$/, '$1,$2').replace(/\d(?=(\d{3})+(?!\d))/g, '$&,');
-    }
-    input.value = valor;
-}
+        // CALCULADORA
 
-function calcularFaturamentoNecessario() {
-    let margemDeLucroInput = document.getElementById('margemLucro');
-    let perdaInput = document.getElementById('valorPerda');
-    let resultadoDiv = document.getElementById('resultado');
+    const faturamentoSlider = document.getElementById("faturamentoSlider");
+    const lucroSlider = document.getElementById("lucroSlider");
+    const perdaSlider = document.getElementById("perdaSlider");
+    const jurosSlider = document.getElementById("jurosSlider");
 
-    // Verifica se os campos estão vazios
-    if (!margemDeLucroInput.value.trim() || !perdaInput.value.trim()) {
-        resultadoDiv.innerText = "Por favor, preencha todos os campos.";
-        return;
+    const faturamentoOutput = document.getElementById("faturamentoOutput");
+    const lucroOutput = document.getElementById("lucroOutput");
+    const perdaOutput = document.getElementById("perdaOutput");
+    const jurosOutput = document.getElementById("jurosOutput");
+
+    const resultDiv = document.getElementById("result");
+    const myModal = document.getElementById("myModal");
+    const myModalImpactos = document.getElementById("myModalImpactos");
+    
+    faturamentoOutput.textContent = "200.000.000";
+
+    faturamentoSlider.oninput = function() {
+        faturamentoOutput.textContent = formatValue(this.value);
     }
 
-    let margemDeLucro = margemDeLucroInput.value.replace('%', '') / 100;
-    let perda = perdaInput.value.replace(/\D/g, '');
-
-    if (isNaN(margemDeLucro) || isNaN(perda)) {
-        resultadoDiv.innerText = "Por favor, insira valores numéricos válidos.";
-        return;
+    lucroSlider.oninput = function() {
+        lucroOutput.textContent = this.value;
     }
 
-    let faturamentoNecessario = perda / margemDeLucro;
+    perdaSlider.oninput = function() {
+        perdaOutput.textContent = formatValue(this.value);
+    }
 
-    // Formatação para o padrão brasileiro
-    let resultadoFormatado = faturamentoNecessario.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
+    jurosSlider.oninput = function() {
+        jurosOutput.textContent = this.value;
+    }
+
+    function formatValue(value) {
+        value = parseInt(value, 10);
+        return value.toLocaleString('pt-BR', { minimumFractionDigits: 0 });
+    }
+
+    function calculate() {
+        const faturamentoAnual = parseFloat(faturamentoSlider.value);
+        const lucroOperacional = parseFloat(lucroSlider.value) / 100;
+        const valorEstimadoPerda = parseFloat(perdaSlider.value);
+        const taxaDeJuros = parseFloat(jurosSlider.value) / 100;
+
+        const lucroAnual = faturamentoAnual * lucroOperacional;
+
+        const custoOportunidade = valorEstimadoPerda * (Math.pow(1 + taxaDeJuros / 12, 12) - 1);
+        const perdaEstimadaTotal = valorEstimadoPerda + custoOportunidade;
+        const mesesParaRecuperar = perdaEstimadaTotal / (lucroAnual / 12);
+
+        let classificacaoImpacto;
+        if (mesesParaRecuperar < 2) {
+            classificacaoImpacto = "Perda Leve";
+        } else if (mesesParaRecuperar < 4) {
+            classificacaoImpacto = "Perda Moderada";
+        } else if (mesesParaRecuperar < 6) {
+            classificacaoImpacto = "Perda Significativa";
+        } else {
+            classificacaoImpacto = "Perda Crítica";
+        }
+        
+        // Calcula a taxa de seguro de crédito com base no faturamento
+        const taxaMaxima = 0.003; // 0,3%
+        const taxaMinima = 0.0005; // 0,05%
+        const faturamentoMaximo = 10000000000; // R$ 10 bilhões
+        const faturamentoMinimo = 200000000; // R$ 200 milhoes
+
+        var custoSeguro;
+        if (faturamentoAnual <= 1000000000) {
+        custoSeguro = ((faturamentoAnual - 200000000) / (1000000000 - 200000000) * (2000000000 - 600000000) + 600000000) / 1000;
+        } else {
+        custoSeguro = ((faturamentoAnual - 1000000000) / (10000000000 - 1000000000) * (5000000000 - 2000000000) + 2000000000) / 1000;
+        }
+
+        myModal.style.display = "flex";    
+
+        resultDiv.innerHTML = `
+            <b>Custo de Oportunidade: </b>R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
+            <b>Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
+            <b>Tempo de Recuperação (meses):</b> ${mesesParaRecuperar.toFixed(1)}<br>
+            <b>Classificação de Impacto:</b> ${classificacaoImpacto}<br><br>
+            <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente: </b>R$ ${formatValue(custoSeguro.toFixed(2))}</p>
+        `;
+    }
+
+    function fechaModal() {
+        myModal.style.display = "none";    
+    }
+
+    function abreModalImpactos() {
+        myModalImpactos.style.display = "flex";    
+    }
+    
+    function fechaModalImpactos() {
+        myModalImpactos.style.display = "none";  
+    }
+
+
+
+// IMPACTOS
+
+function toggleDescription(descriptionId) {
+    // Esconde todos os parágrafos
+    var paragraphs = document.querySelectorAll('#strategicImpacts p[name="teste"]');
+    paragraphs.forEach(function(p) {
+        p.classList.add('hidden');
     });
 
-    resultadoDiv.innerText = `Para cobrir uma perda de R$ ${parseFloat(perda).toLocaleString('pt-BR')}, a empresa precisa faturar ${resultadoFormatado}.`;
+    // Mostra o parágrafo correspondente ao botão clicado
+    var selectedParagraph = document.getElementById(descriptionId);
+    if (selectedParagraph.classList.contains('hidden')) {
+        selectedParagraph.classList.remove('hidden');
+    } else {
+        selectedParagraph.classList.add('hidden');
+    }
 }

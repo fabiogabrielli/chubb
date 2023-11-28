@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estiloCHUBB.css">
+    <title>Simulador WGA Advisors</title>
+    <link rel="icon" href="/content/dam/aem-chubb-global/logo/favicon.ico"/>
+    
+    <!-- CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+   
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+  
+</head>
+<body>
+
+<header>
+    <img src="https://www.chubb.com/content/dam/chubb-sites/chubb/us-en/home_page/CHUBB_Logo_Black_RBG.png" alt="logo CHUBB">
+</header>
+<section class="geral">
+    <div class="stageCalculadora">
+        <div class="calculadora">
+            <h1>DESCUBRA O IMPACTO REAL DE UMA FATURA NÃO PAGA PARA SUA EMPRESA</h1>
+            <div class="slider-container">
+                Faturamento Anual: R$ <span id="faturamentoOutput">0</span><br>
+                <input type="range" min="200000000" max="10000000000" step="5000000" value="200000000" id="faturamentoSlider">
+            </div>
+
+            <div class="slider-container">
+                Lucro Operacional: <span id="lucroOutput">0</span>%<br>
+                <input type="range" min="0" max="100" step="1" value="0" id="lucroSlider">
+            </div>
+
+            <div class="slider-container">
+                Valor Estimado da Perda: R$ <span id="perdaOutput">0</span><br>
+                <input type="range" min="0" max="500000000" step="10000" value="0" id="perdaSlider">
+            </div>
+
+            <div class="slider-container">
+                Taxa de Juros (anual): <span id="jurosOutput">0</span>%<br>
+                <input type="range" min="0" max="50" step="0.1" value="0" id="jurosSlider">
+            </div>
+
+            <button onclick="calculate()">Calcular</button>
+
+            <div id="result"></div>
+
+            <p><strong>Custo de Oportunidade:</strong> Avalia o valor direto de uma perda estimada e o custo de oportunidade associado, calculado com base na taxa de juros escolhida, refletindo o retorno perdido que o capital poderia ter gerado.</p>
+            <p><strong>Prejuízo Total:</strong> Combina o valor estimado da perda com o custo de oportunidade para fornecer uma visão do impacto financeiro total sobre o negócio.</p>
+            <p><strong>Tempo de Recuperação (meses)</strong> Estima quantos meses serão necessários para que a empresa recupere a perda, considerando seu lucro operacional mensal, oferecendo uma noção da resiliência financeira da empresa.</p>
+            <p><strong>Disclaimer: </strong> Os cálculos são apenas estimativas e podem não refletir a realidade de sua empresa.</p>
+        </div>
+    </div>
+    
+<div class="stageImpactos">
+    <div class="impactos">
+    <!-- Painel de Insights -->
+    <div id="strategicImpacts">
+        <h2>INSIGHTS: Seis Impactos Estratégicos através do Seguro de Crédito</h2>
+        <p>Clique nos botões abaixo e entenda como.</p>
+        <div class="impactItem">
+            <button onclick="toggleDescription('description1')">ALAVANCAGEM DE VENDAS</button>
+            <p name="teste"  id="description1" class="hidden">Proporcione prazos mais vantajosos e eleve limites de crédito impulsionando suas vendas e protegendo o seu fluxo de caixa.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description2')">CRESCIMENTO EM CLIENTES-CHAVE</button>
+            <p name="teste"  id="description2" class="hidden">Intensifique suas vendas para os principais clientes, fornecendo mais crédito e prazo tornando-se mais competitivo e fortalecendo relações comerciais.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description3')">CONQUISTA DE NOVOS MERCADOS</button>
+            <p name="teste"  id="description3" class="hidden">Avalie riscos de forma precisa, pré-qualifique clientes e garanta proteção extra, permitindo que você explore novos mercados com confiança e segurança.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description4')">EXPANSÃO INTERNACIONAL SEGURA</button>
+            <p name="teste"  id="description4" class="hidden">Tome decisões estratégicas e ofereça condições competitivas em mercados internacionais, eliminando a necessidade de cartas de crédito e pagamentos à vista.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description5')">FINANCIAMENTO ACESSÍVEL</button>
+            <p name="teste"  id="description5" class="hidden">Utilize recebíveis segurados como garantias, conseguindo acesso a capital de giro com taxas mais atrativas.</p>
+        </div>
+        <div class="impactItem">
+            <button  onclick="toggleDescription('description6')">FLUXO DE CAIXA ESTÁVEL E RENTABILIDADE</button>
+            <p name="teste" id="description6" class="hidden">Mitigue o risco de inadimplência e mora, mantendo um fluxo de caixa saudável e maximizando a rentabilidade do seu negócio.</p>
+        </div>
+    </div>
+    </div>
+</div>
+</section>
+
+
+<!-- JavaScript e dependências do Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<!-- Inclusão do CSS do Slick Carousel -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+<!-- Inclusão do jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!-- Inclusão do JavaScript do Slick Carousel -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+
+<!-- Inclusão do JavaScript Próprio -->
+<script src="js.js"></script>
+
+<!-- Inclusão do FONT AWESOME -->
+<script src="https://kit.fontawesome.com/0cb18bf594.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

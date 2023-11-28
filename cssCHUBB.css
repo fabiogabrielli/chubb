@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+
+.geral {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 10% 10%;
+    background-color: #6E27C5;
+}
+
+/* CALCULADORA */
+
+.calculadora img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.calculadora {
+    width: 60%;
+    background-color: white;
+    border-radius: 15px 0 0 15px;
+    padding: 5%;
+    height: 100%;
+}
+
+.calculadora h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #6E27C5;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.calculadora input {
+    width: 100%;
+    color: red !important;
+}
+
+.slider-container {
+    font-size: 0.9rem;
+    margin-top: 5%;
+}
+
+.calculadora button {
+    min-width: 20%;
+    font-family: 'Lato', sans-serif;
+    border: 1px solid black;
+    font-weight: 400;
+    padding: 6px 30px;
+    margin-top: 20px;
+}
+
+.calculadora button:hover {
+    text-decoration: underline;
+}
+
+/* DESCRIÇÃO */
+
+.descricao {
+    background-color: white;
+    border-radius: 0 15px 15px 0;
+    width: 40%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.descricao p {
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+/* RESULTADOS */
+
+#myModal {
+    background-color: rgba(0, 0, 0, 0.53);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.internoModal {
+    width: 50%;
+    min-height: 50%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 7%;
+}
+
+.internoModal h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #6E27C5;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.internoModal button {
+    min-width: 20%;
+    font-family: 'Lato', sans-serif;
+    border: 1px solid black;
+    font-weight: 400;
+    padding: 6px 30px;
+    margin-top: 20px;
+}
+
+.internoModal button:hover {
+    text-decoration: underline;
+}
+
+.internoModal img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+/* IMPACTOS */
+
+#myModalImpactos {
+    background-color: rgba(0, 0, 0, 0.53);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.internoImpactos {
+    background-color: white;
+    width: 70%;
+    min-height: 70%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 7%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.internoImpactos > a {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 2rem;
+    color: black;
+}
+
+.internoImpactos > h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #6E27C5;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
+}
+
+.impacto {
+    border: 1px solid black;
+    width: 32%;
+    padding: 30px;
+    margin: 3px;
+}
+
+.impacto i {
+    margin-bottom: 6px;
+    font-size: 3rem;
+}
+
+.impacto h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}
+
+.impacto h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+}
