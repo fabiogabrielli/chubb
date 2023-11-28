@@ -15,7 +15,7 @@ body, html {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    padding: 10% 10%;
+    padding: 5% 5%;
     background-color: #6E27C5;
 }
 
@@ -43,12 +43,11 @@ body, html {
 
 .calculadora input {
     width: 100%;
-    color: red !important;
 }
 
 .slider-container {
     font-size: 0.9rem;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .calculadora button {
@@ -149,7 +148,7 @@ body, html {
     min-height: 70%;
     background-color: white;
     border-radius: 15px;
-    padding: 7%;
+    padding: 4%;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -174,7 +173,7 @@ body, html {
 .impacto {
     border: 1px solid black;
     width: 32%;
-    padding: 30px;
+    padding: 2%;
     margin: 3px;
 }
 
