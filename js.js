@@ -98,21 +98,3 @@
     }
 
 
-
-// IMPACTOS
-
-function toggleDescription(descriptionId) {
-    // Esconde todos os parágrafos
-    var paragraphs = document.querySelectorAll('#strategicImpacts p[name="teste"]');
-    paragraphs.forEach(function(p) {
-        p.classList.add('hidden');
-    });
-
-    // Mostra o parágrafo correspondente ao botão clicado
-    var selectedParagraph = document.getElementById(descriptionId);
-    if (selectedParagraph.classList.contains('hidden')) {
-        selectedParagraph.classList.remove('hidden');
-    } else {
-        selectedParagraph.classList.add('hidden');
-    }
-}

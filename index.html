@@ -17,82 +17,80 @@
 <body>
 
 <section class="geral">
-    <div class="calculadora">
-        <img src="https://www.chubb.com/content/dam/chubb-sites/chubb/us-en/home_page/CHUBB_Logo_Black_RBG.png" alt="logo CHUBB">
-        <h1>Descubra o impacto real de uma fatura NÃO paga para a sua empresa</h1>
-        <div class="slider-container">
-            Faturamento Anual: R$ <span id="faturamentoOutput">0</span><br>
-            <input type="range" min="200000000" max="10000000000" step="5000000" value="200000000" id="faturamentoSlider">
-        </div>
+    <div class="stagePrincipal">
+        <div class="calculadora">
+            <img src="https://www.chubb.com/content/dam/chubb-sites/chubb/us-en/home_page/CHUBB_Logo_Black_RBG.png" alt="logo CHUBB">
+            <h1>Descubra o impacto real de uma fatura NÃO paga para a sua empresa</h1>
+            <div class="slider-container">
+                Faturamento Anual: R$ <span id="faturamentoOutput">0</span><br>
+                <input type="range" min="200000000" max="10000000000" step="5000000" value="200000000" id="faturamentoSlider">
+            </div>
 
-        <div class="slider-container">
-            Lucro Operacional: <span id="lucroOutput">0</span>%<br>
-            <input type="range" min="0" max="100" step="1" value="0" id="lucroSlider">
-        </div>
+            <div class="slider-container">
+                Lucro Operacional: <span id="lucroOutput">0</span>%<br>
+                <input type="range" min="0" max="100" step="1" value="0" id="lucroSlider">
+            </div>
 
-        <div class="slider-container">
-            Valor Estimado da Perda: R$ <span id="perdaOutput">0</span><br>
-            <input type="range" min="0" max="500000000" step="10000" value="0" id="perdaSlider">
-        </div>
+            <div class="slider-container">
+                Valor Estimado da Perda: R$ <span id="perdaOutput">0</span><br>
+                <input type="range" min="0" max="500000000" step="10000" value="0" id="perdaSlider">
+            </div>
 
-        <div class="slider-container">
-            Taxa de Juros (anual): <span id="jurosOutput">0</span>%<br>
-            <input type="range" min="0" max="50" step="0.1" value="0" id="jurosSlider">
+            <div class="slider-container">
+                Taxa de Juros (anual): <span id="jurosOutput">0</span>%<br>
+                <input type="range" min="0" max="50" step="0.1" value="0" id="jurosSlider">
+            </div>
+            <button onclick="calculate()">Calcular</button><br><br>
         </div>
-        <button onclick="calculate()">Calcular</button><br><br>
-        <a onclick="abreModalImpactos()" href="#">INSIGHTS: Seis Impactos Estratégicos através do Seguro de Crédito</a>
-    </div>
-    <div class="descricao">
-        <h1></h1>
-        <p><strong>Custo de Oportunidade:</strong> Avalia o valor direto de uma perda estimada e o custo de oportunidade associado, calculado com base na taxa de juros escolhida, refletindo o retorno perdido que o capital poderia ter gerado.</p>
-        <p><strong>Prejuízo Total:</strong> Combina o valor estimado da perda com o custo de oportunidade para fornecer uma visão do impacto financeiro total sobre o negócio.</p>
-        <p><strong>Tempo de Recuperação (meses)</strong> Estima quantos meses serão necessários para que a empresa recupere a perda, considerando seu lucro operacional mensal, oferecendo uma noção da resiliência financeira da empresa.</p>
-        <p><strong>Disclaimer: </strong> Os cálculos são apenas estimativas e podem não refletir a realidade de sua empresa.</p>
+        <div class="internoImpactos">
+            <h1>INSIGHTS: Seis Impactos Estratégicos através do Seguro de Crédito</h1>
+            <div class="impacto">
+                <i class="fa-solid fa-chart-line"></i>
+                <h1>ALAVANCAGEM DE VENDAS</h1>
+                <h4>Proporcione prazos mais vantajosos e eleve limites de crédito impulsionando suas vendas e protegendo o seu fluxo de caixa.</h4>
+            </div>
+            <div class="impacto">
+                <i class="fa-solid fa-user-group"></i>
+                <h1>CRESCIMENTO EM CLIENTES-CHAVE</h1>
+                <h4>Intensifique suas vendas para os principais clientes, fornecendo mais crédito e prazo tornando-se mais competitivo e fortalecendo relações comerciais.</h4>
+            </div>
+            <div class="impacto">
+                <i class="fa-regular fa-handshake"></i>
+                <h1>CONQUISTA DE NOVOS MERCADOS</h1>
+                <h4>Avalie riscos de forma precisa, pré-qualifique clientes e garanta proteção extra, permitindo que você explore novos mercados com confiança e segurança.</h4>
+            </div>
+            <div class="impacto">
+                <i class="fa-solid fa-globe"></i>
+                <h1>EXPANSÃO INTERNACIONAL SEGURA</h1>
+                <h4>Tome decisões estratégicas e ofereça condições competitivas em mercados internacionais, eliminando a necessidade de cartas de crédito e pagamentos à vista.</h4>
+            </div>
+            <div class="impacto">
+                <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                <h1>FINANCIAMENTO ACESSÍVEL</h1>
+                <h4>Utilize recebíveis segurados como garantias, conseguindo acesso a capital de giro com taxas mais atrativas.</h4>
+            </div>
+            <div class="impacto">
+                <i class="fa-regular fa-money-bill-1"></i>
+                <h1>FLUXO DE CAIXA ESTÁVEL E RENTÁVEL</h1>
+                <h4>Mitigue o risco de inadimplência e mora, mantendo um fluxo de caixa saudável e maximizando a rentabilidade do seu negócio.</h4>
+            </div>
+        </div>
     </div>
 </section>
 
 <div id="myModal">
-    <div class="internoModal">
-        <img src="https://www.chubb.com/content/dam/chubb-sites/chubb/us-en/home_page/CHUBB_Logo_Black_RBG.png" alt="logo CHUBB">
-        <h1>Resultado da Simulação</h1>
-        <div id="result"></div>
-        <button id="novoCalculo" onclick="fechaModal()">Novo Calculo</button>
-    </div>
-</div>
-
-<div id="myModalImpactos">
-    <div class="internoImpactos">
-        <a onclick="fechaModalImpactos()" href="#"><i class="fa-solid fa-circle-xmark"></i></a>
-        <h1>INSIGHTS: Seis Impactos Estratégicos através do Seguro de Crédito</h1>
-        <div class="impacto">
-            <i class="fa-solid fa-chart-line"></i>
-            <h1>ALAVANCAGEM DE VENDAS</h1>
-            <h4>Proporcione prazos mais vantajosos e eleve limites de crédito impulsionando suas vendas e protegendo o seu fluxo de caixa.</h4>
+    <div class="stageMyModal">
+        <div class="internoModal">
+            <img src="https://www.chubb.com/content/dam/chubb-sites/chubb/us-en/home_page/CHUBB_Logo_Black_RBG.png" alt="logo CHUBB">
+            <h1>Resultado da Simulação</h1>
+            <div id="result"></div>
+            <button id="novoCalculo" onclick="fechaModal()">Novo Calculo</button>
         </div>
-        <div class="impacto">
-            <i class="fa-solid fa-user-group"></i>
-            <h1>CRESCIMENTO EM CLIENTES-CHAVE</h1>
-            <h4>Intensifique suas vendas para os principais clientes, fornecendo mais crédito e prazo tornando-se mais competitivo e fortalecendo relações comerciais.</h4>
-        </div>
-        <div class="impacto">
-            <i class="fa-regular fa-handshake"></i>
-            <h1>CONQUISTA DE NOVOS MERCADOS</h1>
-            <h4>Avalie riscos de forma precisa, pré-qualifique clientes e garanta proteção extra, permitindo que você explore novos mercados com confiança e segurança.</h4>
-        </div>
-        <div class="impacto">
-            <i class="fa-solid fa-globe"></i>
-            <h1>EXPANSÃO INTERNACIONAL SEGURA</h1>
-            <h4>Tome decisões estratégicas e ofereça condições competitivas em mercados internacionais, eliminando a necessidade de cartas de crédito e pagamentos à vista.</h4>
-        </div>
-        <div class="impacto">
-            <i class="fa-solid fa-circle-dollar-to-slot"></i>
-            <h1>FINANCIAMENTO ACESSÍVEL</h1>
-            <h4>Utilize recebíveis segurados como garantias, conseguindo acesso a capital de giro com taxas mais atrativas.</h4>
-        </div>
-        <div class="impacto">
-            <i class="fa-regular fa-money-bill-1"></i>
-            <h1>FLUXO DE CAIXA ESTÁVEL E RENTÁVEL</h1>
-            <h4>Mitigue o risco de inadimplência e mora, mantendo um fluxo de caixa saudável e maximizando a rentabilidade do seu negócio.</h4>
+        <div class="descricao">
+            <p><strong>Custo de Oportunidade:</strong> Avalia o valor direto de uma perda estimada e o custo de oportunidade associado, calculado com base na taxa de juros escolhida, refletindo o retorno perdido que o capital poderia ter gerado.</p>
+            <p><strong>Prejuízo Total:</strong> Combina o valor estimado da perda com o custo de oportunidade para fornecer uma visão do impacto financeiro total sobre o negócio.</p>
+            <p><strong>Tempo de Recuperação (meses)</strong> Estima quantos meses serão necessários para que a empresa recupere a perda, considerando seu lucro operacional mensal, oferecendo uma noção da resiliência financeira da empresa.</p>
+            <p><strong>Disclaimer: </strong> Os cálculos são apenas estimativas e podem não refletir a realidade de sua empresa.</p>
         </div>
     </div>
 </div>
