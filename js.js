@@ -77,11 +77,12 @@
         myModal.style.display = "flex";    
 
         resultDiv.innerHTML = `
-            <b>Custo de Oportunidade: </b>R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
-            <b>Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}<br>
+            <b>(+) Perda Estimada: </b>R$ ${formatValue(valorEstimadoPerda.toFixed(2))}<br>
+            <b>(+) Custo de Oportunidade: </b>R$ ${formatValue(custoOportunidade.toFixed(2))}<br>
+            <span class="prejuizo"><b>(-) Prejuízo Total:</b> R$ ${formatValue(perdaEstimadaTotal.toFixed(2))}</span><br><br>
             <b>Tempo de Recuperação (meses):</b> ${mesesParaRecuperar.toFixed(1)}<br>
             <b>Classificação de Impacto:</b> ${classificacaoImpacto}<br><br>
-            <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente: </b>R$ ${formatValue(custoSeguro.toFixed(2))}</p>
+            <p><b>Caso a empresa tivesse contratado um seguro de crédito para proteger seus recebíveis, o seu custo anual seria de aproximadamente: </b><h1>R$ ${formatValue(custoSeguro.toFixed(2))}</h1></p>
         `;
     }
 
