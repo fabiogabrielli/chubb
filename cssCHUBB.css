@@ -241,7 +241,7 @@ body, html {
         width: 100vw;
         overflow: scroll !important;
         border: 1px white dashed;
-        display: flex;
+        display: none;
         align-items: flex-start;
     }
 
