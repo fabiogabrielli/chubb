@@ -74,7 +74,12 @@
         custoSeguro = ((faturamentoAnual - 1000000000) / (10000000000 - 1000000000) * (5000000000 - 2000000000) + 2000000000) / 1000;
         }
 
-        myModal.style.display = "flex";    
+
+        myModal.style.display = "flex";  
+
+        const geral = document.getElementById("geral");
+        geral.style.display = "none";  
+
 
         resultDiv.innerHTML = `
             <b>(+) Perda Estimada: </b>R$ ${formatValue(valorEstimadoPerda.toFixed(2))}<br>
@@ -87,17 +92,9 @@
     }
 
     function fechaModal() {
-        myModal.style.display = "none";    
+        myModal.style.display = "none";
+        geral.style.display = "flex";  
     }
-
-    function abreModalImpactos() {
-        myModalImpactos.style.display = "flex";    
-    }
-    
-    function fechaModalImpactos() {
-        myModalImpactos.style.display = "none";  
-    }
-
     
 
 
