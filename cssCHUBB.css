@@ -65,25 +65,50 @@ body, html {
     text-decoration: underline;
 }
 
-/* DESCRIÇÃO */
 
-.descricao {
+
+/* IMPACTOS */
+
+.internoImpactos {
     background-color: white;
-    width: 40%;
-    min-height: 80%;
-    padding: 5%;
+    width: 70%;
+    min-height: 70%;
+    background-color: white;
+    padding: 4%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.descricao p {
-    font-size: 0.8rem;
-    font-family: 'Lato', sans-serif;
-}
-
-.descricao h1 {
+.internoImpactos > h1 {
     font-size: 1.8rem;
     font-weight: 500;
     color: #6E27C5;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
+}
+
+.impacto {
+    border: 1px solid black;
+    width: 32%;
+    padding: 2%;
+    margin: 3px;
+}
+
+.impacto i {
+    margin-bottom: 6px;
+    font-size: 3rem;
+}
+
+.impacto h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    color: #6E27C5;
+}
+
+.impacto h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
 }
 
 /* RESULTADOS */
@@ -141,46 +166,89 @@ body, html {
     color: red;
 }
 
-/* IMPACTOS */
+/* DESCRIÇÃO */
 
-.internoImpactos {
+.descricao {
     background-color: white;
-    width: 70%;
-    min-height: 70%;
-    background-color: white;
-    padding: 4%;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
+    width: 40%;
+    min-height: 80%;
+    padding: 5%;
 }
 
-.internoImpactos > h1 {
+.descricao p {
+    font-size: 0.8rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.descricao h1 {
     font-size: 1.8rem;
     font-weight: 500;
     color: #6E27C5;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-bottom: 20px;
 }
 
-.impacto {
-    border: 1px solid black;
-    width: 32%;
-    padding: 2%;
-    margin: 3px;
-}
 
-.impacto i {
-    margin-bottom: 6px;
-    font-size: 3rem;
-}
 
-.impacto h1 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1rem;
-    color: #6E27C5;
-}
 
-.impacto h4 {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.8rem;
+
+/* ------------------------RESPONSIVO------------------------ */
+
+
+@media screen and (max-width: 600px){
+    .geral {
+        height: 100%;
+        padding: 5%;
+    }
+    .stagePrincipal {
+        display: block;
+    }
+
+    /* CALCULADORA */
+
+    .calculadora img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    .calculadora {
+        width: 100%;
+        margin-bottom: 5%;
+        padding: 7%;
+    }
+
+    /* IMPACTOS */
+
+    .internoImpactos {
+        width: 100%;
+    }
+
+    .impacto {
+        width: 100%;
+        margin-bottom: 5%;
+        padding: 7%;
+    }
+
+    /* RESULTADOS */
+
+    #myModal {
+        height: 100%;
+        padding: 10%;
+    }
+
+    .stageMyModal {
+        display: block;
+    }
+    
+    .internoModal {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+    /* DESCRIÇÃO */
+
+    .descricao {
+        width: 100%;
+        padding: 7%;
+    }
+
 }
