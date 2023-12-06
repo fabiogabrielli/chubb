@@ -192,8 +192,6 @@ body, html {
 
 
 
-
-
 /* ------------------------RESPONSIVO------------------------ */
 
 
@@ -236,12 +234,13 @@ body, html {
     /* RESULTADOS */
 
     #myModal {
+        position: static;
         padding: 5%;
         width: 100vw;
         overflow: scroll !important;
-        border: 1px white dashed;
         display: none;
         align-items: flex-start;
+        background-color: #6E27C5;
     }
 
     .stageMyModal {
