@@ -66,6 +66,21 @@ header img {
     padding: 5px 15px;
 }
 
+a:hover {
+    text-decoration: none !important;
+    color: black
+}
+
+.linkDownload:visited {
+    text-decoration: none;
+    color: black
+}
+
+.linkDownload {
+    text-decoration: none;
+    color: #6E27C5;
+}
+
 #result {
     font-family: 'Lato', sans-serif;
     color: white;
