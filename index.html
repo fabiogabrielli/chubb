@@ -19,7 +19,7 @@
 <section id="geral" class="geral">
     <div class="stagePrincipal">
         <div class="calculadora">
-            <img src="https://www.chubb.com/content/dam/chubb-sites/chubb/us-en/home_page/CHUBB_Logo_Black_RBG.png" alt="logo CHUBB">
+            <img class="logoCHUBB" src="https://www.chubb.com/content/dam/chubb-sites/chubb/us-en/home_page/CHUBB_Logo_Black_RBG.png" alt="logo CHUBB">
             <h1>Descubra o impacto real de uma fatura NÃO paga para a sua empresa</h1>
             <div class="slider-container">
                 Faturamento Anual: R$ <span id="faturamentoOutput">0</span><br>
@@ -41,6 +41,10 @@
                 <input type="range" min="0" max="50" step="0.1" value="0" id="jurosSlider">
             </div>
             <button onclick="calculate()">Calcular</button><br><br>
+            <div class="divPower">
+                <div class="power">powered by</div>
+                <a href="https://www.wgaadvisors.com.br"><img class="logoWGA" src="/imgs/logoWGA.svg" alt="logo WGA Group"></a>
+            </div>
         </div>
         <div class="internoImpactos">
             <h1>INSIGHTS: Seis Impactos Estratégicos através do Seguro de Crédito</h1>
@@ -87,6 +91,7 @@
             <h1>Resultado da Simulação</h1>
             <div id="result"></div>
             <button id="novoCalculo" onclick="fechaModal()">Novo Calculo</button>
+            <h6>Caso queira alavancar as vendas da sua empresa e reduzir riscos de inadimplência, preencha o questionário anexo e entre em contato com seu corretor</h6>
         </div>
         <div class="descricao">
             <h1>Observações</h1>

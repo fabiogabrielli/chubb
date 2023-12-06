@@ -26,7 +26,7 @@ body, html {
 
 /* CALCULADORA */
 
-.calculadora img {
+.logoCHUBB {
     width: 200px;
     margin-bottom: 20px;
 }
@@ -66,6 +66,20 @@ body, html {
     text-decoration: underline;
 }
 
+.divPower {
+    display: flex;
+    align-items: baseline;
+}
+
+.power {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+}
+
+.logoWGA {
+    height: 20px;
+    padding-left: 5px;
+}
 
 
 /* IMPACTOS */
@@ -94,6 +108,10 @@ body, html {
     width: 32%;
     padding: 2%;
     margin: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .impacto i {
@@ -105,11 +123,13 @@ body, html {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1rem;
     color: #6E27C5;
+    text-align: center;
 }
 
 .impacto h4 {
     font-family: 'Lato', sans-serif;
     font-size: 0.8rem;
+    text-align: center;
 }
 
 /* RESULTADOS */
@@ -154,6 +174,12 @@ body, html {
 
 .internoModal button:hover {
     text-decoration: underline;
+}
+
+.internoModal h6 {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    margin-top: 10px;
 }
 
 .internoModal img {
@@ -208,21 +234,38 @@ body, html {
 
     /* CALCULADORA */
 
-    .calculadora img {
+    .logoCHUBB {
         width: 200px;
         margin-bottom: 20px;
+        align-self: center;
     }
 
     .calculadora {
         width: 100%;
         margin-bottom: 5%;
         padding: 7%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .calculadora h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .calculadora button {
+        width: 50%;
     }
 
     /* IMPACTOS */
 
     .internoImpactos {
         width: 100%;
+    }
+
+    .internoImpactos > h1 {
+        font-size: 1.5rem;
+        text-align: center;
     }
 
     .impacto {
